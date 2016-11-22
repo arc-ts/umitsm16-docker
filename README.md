@@ -20,6 +20,7 @@ docker history from
 ```
 
 ## Demo 4 - Run
+* visit http://localhost:8888 when up
 
 ```
 docker pull nginx:stable-alpine
@@ -33,4 +34,22 @@ docker run -d -v $(pwd)/demo4-run:/usr/share/nginx/html -p 8888:80 nginx:stable-
 **windows**
 ```
 docker run -d -v %cd%/demo4-run:/usr/share/nginx/html -p 8888:80 nginx:stable-alpine
+```
+
+## Compose
+
+* Requires installing compose for your system: https://docs.docker.com/compose/install/
+* Visit http://localhost when up
+
+```
+docker-compose -f compose-wordpress/docker-compose.yml up -d
+```
+
+**To clean up**
+```
+docker-compose -f compose-wordpress/docker-compose.yml stop
+docker-compose -f compose-wordpress/docker-compose.yml rm -f
+docker volume rm composewordpress_db_data
+docker network rm backend
+docker network rm public
 ```
